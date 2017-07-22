@@ -14,6 +14,8 @@ class GamesController < ApplicationController
     @guess = Guess.new()
     @pone_guesses = @game.guesses.select { |guess| guess.player == current_player }
     @ptwo_guesses = @game.guesses.reject { |guess| guess.player == current_player }
+    @show_button = true if @pone_guesses.length <= @ptwo_guesses.length
+
   end
 
   def find_or_create_game

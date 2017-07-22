@@ -18,10 +18,11 @@
     <% end %>
   </ul>
 <% end %>
+<% if @show_button %>
+  <%= form_for [@game, @guess] do |f| %>
+    <%= f.label :answer, "Next Word" %><br />
+    <%= f.text_field :answer, autofocus: true %>
 
-<%= form_for [@game, @guess] do |f| %>
-  <%= f.label :answer, "Next Word" %><br />
-  <%= f.text_field :answer, autofocus: true %>
-
-  <%= f.submit "Confirm Word" %>
+    <%= f.submit "Confirm Word" %>
+  <% end %>
 <% end %>
