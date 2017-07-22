@@ -5,8 +5,8 @@ class GuessesController < ApplicationController
 
   def create
     @guess = Guess.new(guess_params)
-    @game = Game.find(params[:game_id])
-    if @game
+    if params[:game_id]
+      @game = Game.find(params[:game_id])
       @guess.word_1 = @game.current_player_guesses(current_player).last.answer
       @guess.word_2 = @game.other_player_guesses(current_player).last.answer
     else
