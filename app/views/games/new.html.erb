@@ -1,0 +1,7 @@
+<%= form_for @guess do |f| %>
+
+  <%= f.label :answer %><br />
+  <%= f.text_field :answer, autofocus: true %>
+
+  <%= f.submit "Start Game" %>
+<% end %>
