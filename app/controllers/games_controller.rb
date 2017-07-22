@@ -5,6 +5,10 @@ class GamesController < ApplicationController
     render :show
   end
 
+  def new
+    redirect_to new_guess_path
+  end
+
   def show
     @game = Game.find(params[:id])
     @guess = Guess.new()
