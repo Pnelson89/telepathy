@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <div class="header">
+      <% if current_player.nil? %>
+        <%= link_to "Sign Up", new_player_registration_path %>
+        <%= link_to "Sign In", new_player_session_path %>
+      <% else %>
+        <span id="greeting">Welcome <%= current_player.username %>!</span>
+      <% end %>
+    </div>
     <div class="flash-messages">
       <% flash.each do |key, message| %>
         <div class="flash-<%= key %>">
