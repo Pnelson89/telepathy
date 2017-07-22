@@ -1,28 +1,44 @@
 <h1>New Game</h1>
 <%= "id=  #{@game.id.to_s}" %>
+<div class="row">
+  <div class="small-4 small-centered columns ">
+    <% if @show_button %>
+      <%= form_for [@game, @guess] do |f| %>
+      <%= f.label :answer, "Next Word" %><br />
+      <%= f.text_field :answer, autofocus: true %>
 
-<% unless @pone_guesses.nil? %>
-  <h2>Your words:</h2>
-  <ul>
-    <% @pone_guesses.each do |guess| %>
-      <li><%= guess.answer %></li>
+      <%= f.submit "Confirm Word" %>
+      <% end %>
+    <% else %>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     <% end %>
-  </ul>
-<% end %>
+  </div>
+</div>
 
-<% unless @ptwo_guesses.nil? %>
-  <h2>Their words:</h2>
-  <ul>
-    <% @ptwo_guesses.each do |guess| %>
-      <li><%= guess.answer %></li>
+<div class="row">
+  <div class="small-6 columns ">
+    <% unless @pone_guesses.nil? %>
+      <h2>Your words:</h2>
+      <ul>
+        <% @pone_guesses.each do |guess| %>
+          <li><%= guess.answer %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
-<% if @show_button %>
-  <%= form_for [@game, @guess] do |f| %>
-    <%= f.label :answer, "Next Word" %><br />
-    <%= f.text_field :answer, autofocus: true %>
+  </div>
 
-    <%= f.submit "Confirm Word" %>
-  <% end %>
-<% end %>
+  <div class="small-6 columns end">
+    <% unless @ptwo_guesses.nil? %>
+      <h2>Their words:</h2>
+      <ul>
+        <% @ptwo_guesses.each do |guess| %>
+          <li><%= guess.answer %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
