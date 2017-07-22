@@ -1,2 +1,27 @@
 <h1>New Game</h1>
 <%= "id=  #{@game.id.to_s}" %>
+
+<% unless @pone_guesses.nil? %>
+  <h2>Your words:</h2>
+  <ul>
+    <% @pone_guesses.each do |guess| %>
+      <li><%= guess.answer %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% unless @ptwo_guesses.nil? %>
+  <h2>Their words:</h2>
+  <ul>
+    <% @ptwo_guesses.each do |guess| %>
+      <li><%= guess.answer %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@game, @guess] do |f| %>
+  <%= f.label :answer, "Next Word" %><br />
+  <%= f.text_field :answer, autofocus: true %>
+
+  <%= f.submit "Confirm Word" %>
+<% end %>
