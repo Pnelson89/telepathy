@@ -16,7 +16,11 @@ class GuessesController < ApplicationController
     @guess.game = @game
     @guess.player = current_player
     @guess.save
-    redirect_to game_path(@guess.game)
+
+    GameChannel.broadcast_to(@game, @guess)
+    unless params[:game_id]
+      redirect_to game_path(@guess.game)
+    end
   end
 
   private

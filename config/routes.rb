@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :guesses, only: [:new, :create]
+
+  mount ActionCable.server => '/cable'
 end
